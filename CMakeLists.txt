@@ -1,0 +1,24 @@
+
+cmake_minimum_required(VERSION 3.13)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE Debug)
+include(FetchContent)
+FetchContent_Declare(
+	pico-sdk
+	GIT_REPOSITORY https://github.com/raspberrypi/pico-sdk.git
+	GIT_SUBMODULES_RECURSE OFF
+	GIT_TAG 1.4.0)
+FetchContent_MakeAvailable(pico-sdk)
+
+include(${pico-sdk_SOURCE_DIR}/external/pico_sdk_import.cmake)
+pico_sdk_init()
+project(TechTheTaste LANGUAGES C CXX ASM)
+add_library(asserv pid.c pidll.c)
+target_link_libraries(asserv pico_stdlib hardware_pwm)
+target_include_directories(asserv PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+add_executable(test main.c)
+target_link_libraries(test asserv pico_stdlib)
+pico_enable_stdio_usb(test 1)
+pico_enable_stdio_uart(test 0)
+pico_add_extra_outputs(test)
