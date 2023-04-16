@@ -6,7 +6,7 @@ typedef struct PIDController {
 
 typedef struct {
     PIDController *direction, *distance;
-    double command_left, command_right;
+    double command_distance, command_direction;
 } PIDArchi;
 
 void initPID(PIDController*, float*, float*, float*);
