@@ -6,13 +6,14 @@ PIDArchi archi;
 float kP_right=1;
 float kD_right=0; 
 float kI_right=0; 
-float kP_left=1;
-float kD_left=0;
-float kI_left=0;
-float kP_center=1;
-float kD_center=0;
-float kI_center=0;
 */
+float kP_direction=1;
+float kD_direction=0;
+float kI_direction=0;
+float kP_distance=1;
+float kD_distance=0;
+float kI_distance=0;
+
 
 void initPID(PIDController* PID, float* Kp, float* Ki, float* Kd) {
     PID->Kp = Kp;
