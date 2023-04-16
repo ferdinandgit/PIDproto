@@ -5,7 +5,7 @@ typedef struct PIDController {
 } PIDController;
 
 typedef struct {
-    PIDController *left, *right, *central;
+    PIDController *direction, *distance;
     double command_left, command_right;
 } PIDArchi;
 
@@ -14,24 +14,20 @@ void resetPID(PIDController*);
 void updatePID(PIDController*, float);
 double getPIDOutput(PIDController*);
 
-void initArchi(PIDArchi*, PIDController*, PIDController*, PIDController*);
+void initArchi(PIDArchi*, PIDController*, PIDController*);
 void resetArchi(PIDArchi*, double, double);
 void updateArchi(PIDArchi*, double, double);
 
 double getArchiLeftOutput(PIDArchi*);
 double getArchiRightOutput(PIDArchi*);
 
-extern PIDController center;
-extern PIDController left;
-extern PIDController right;
+extern PIDController direction;
+extern PIDController distance;
 extern PIDArchi archi; 
 
-extern float kP_right;
-extern float kD_right; 
-extern float kI_right; 
-extern float kP_left;
-extern float kD_left;
-extern float kI_left;
-extern float kP_center;
-extern float kD_center;
-extern float kI_center;
+extern float kP_distance;
+extern float kD_distance; 
+extern float kI_distance; 
+extern float kP_direction;
+extern float kD_direction;
+extern float kI_direction;
