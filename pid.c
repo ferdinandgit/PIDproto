@@ -30,9 +30,9 @@ void resetPID(PIDController* PID) {
 }
 
 void updatePID(PIDController* PID, float error) {
-    PID->derivative = error - PID->error;
+    PID->derivative = error - PID->error / 0.005;
     PID->integral += error * 0.005;
-    PID->error = error / 0.005;
+    PID->error = error;
 }
 
 double getPIDOutput(PIDController* PID) {
