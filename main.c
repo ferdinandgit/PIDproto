@@ -11,16 +11,14 @@
 float pid[16] ={1,0,0};
 
 int main(){
-/*	encoderIrqSetup();
+	stdio_init_all();
+	encoderIrqSetup();
 	initMotors();
-	initPID(&center,&pid[0],&pid[1],&pid[1]);
-	initPID(&left,&pid[0],&pid[1],&pid[1]);
-	initPID(&right,&pid[0],&pid[1],&pid[1]);
-	initArchi(&archi,&left,&right,&center);
-	initTimer(); 
-	resetArchi(&archi, 1000, 1000);
+	commandMotors(16,17,-1000);
+	commandMotors(15,14,-1000);
 	while(1){
-		move(1000,&archi);	
-	}*/
+		printf("left %d, right %d \n",leftcounter,rightcounter);	
+		sleep_ms(100);
+	}
  }
 

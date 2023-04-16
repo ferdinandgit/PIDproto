@@ -17,40 +17,40 @@ int rightcounter=0;
 
 void incrementIrq(uint gpio,uint32_t event){
 	switch (gpio) {
-		case 19:	
-			if(gpio_get(18)==1){
+		case 0:	
+			if(gpio_get(1)==1){
 				rightcounter++;
 			}
 			else{
 				rightcounter--;
 			}
 		break;
-		case 12:
-			if(gpio_get(13)==1){
-				leftcounter--;
+		case 2:
+			if(gpio_get(3)==1){
+				leftcounter++;
 			}
 			else {
-				leftcounter++;
+				leftcounter--;
 			}
 		break;
 	}
 }
 
 int encoderIrqSetup(){
-	gpio_init(18);
-	gpio_set_dir(18,GPIO_IN);
-	gpio_pull_down(18);
-	gpio_set_function(19, GPIO_FUNC_SIO);
-	gpio_set_dir(19, false);
-	gpio_pull_down(19);
-	gpio_set_irq_enabled_with_callback(19, GPIO_IRQ_EDGE_RISE, true, &incrementIrq);
-	gpio_init(13);
-	gpio_set_dir(13,GPIO_IN);
-	gpio_pull_down(13);
-	gpio_set_function(12, GPIO_FUNC_SIO);
-	gpio_set_dir(12, false);
-	gpio_pull_down(12);
-	gpio_set_irq_enabled_with_callback(12, GPIO_IRQ_EDGE_RISE, true, &incrementIrq);
+	gpio_init(1);
+	gpio_set_dir(1,GPIO_IN);
+	gpio_pull_down(1);
+	gpio_set_function(0, GPIO_FUNC_SIO);
+	gpio_set_dir(0, false);
+	gpio_pull_down(0);
+	gpio_set_irq_enabled_with_callback(0, GPIO_IRQ_EDGE_RISE, true, &incrementIrq);
+	gpio_init(3);
+	gpio_set_dir(3,GPIO_IN);
+	gpio_pull_down(3);
+	gpio_set_function(2, GPIO_FUNC_SIO);
+	gpio_set_dir(2, false);
+	gpio_pull_down(2);
+	gpio_set_irq_enabled_with_callback(2, GPIO_IRQ_EDGE_RISE, true, &incrementIrq);
 	return 0;
 }
 
