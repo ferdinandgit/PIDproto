@@ -23,11 +23,13 @@ double getArchiRightOutput(PIDArchi*);
 
 extern PIDController direction;
 extern PIDController distance;
-extern PIDArchi archi; 
+extern PIDArchi archi;
 
+/*
 extern float kP_distance;
 extern float kD_distance; 
 extern float kI_distance; 
 extern float kP_direction;
 extern float kD_direction;
 extern float kI_direction;
+*/
